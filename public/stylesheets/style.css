@@ -67,7 +67,15 @@ main {
   margin: auto;
 }
 
-/* BUTTON CLARITY */
-button:focus {
-  outline: 3px solid #F7C64A;
+.delete-btn {
+  background-color: #10291D;
+  color: #F7F7F7;
+  border: none;
+  padding: 6px 10px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #8C92AC;
 }
