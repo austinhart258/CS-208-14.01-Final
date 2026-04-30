@@ -1,14 +1,31 @@
 var express = require('express');
 var router = express.Router();
 
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Downtown Donuts', page: 'home' });
+});
+
+/* MENU */
+router.get('/menu', function(req, res) {
+  res.render('index', { title: 'Menu', page: 'menu' });
+});
+
+/* ABOUT */
+router.get('/about', function(req, res) {
+  res.render('index', { title: 'About', page: 'about' });
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next){
+  const page = req.query.page || 'home';
+
   try {
     req.db.query('SELECT * FROM todos;', (err, results) => {
       if (err) {
-        if (err) return res.status(500).send("Error");
+        console.error('Error fetching todos:', err);
+        return res.status(500).send('Error fetching todos');
       }
-      res.render('index', { title: 'Downtown Donuts', todos: results, page: page});
+      res.render('index', { title: 'Downtown Donuts', todos: results, page: page });
     });
   } catch (error) {
     console.error('Error fetching items:', error);
