@@ -31,7 +31,7 @@ header {
   background-size: cover;
   background-position: center;
   color: white;
-  padding: 100px 20px;
+  padding: 200px 20px;
   text-align: center;
 }
 
@@ -85,6 +85,21 @@ main {
   margin: auto;
 }
 
+/* BUTTONS */
+button, .button {
+  background-color: #F7C64A;
+  color: black;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e6b73c;
+}
+
+/* DELETE BUTTON */
 .delete-btn {
   background-color: #10291D;
   color: #F7F7F7;
@@ -101,8 +116,8 @@ main {
 /* COMMENTS */
 .comment {
   background: white;
-  padding: 12px;
-  margin: 15px 0;
+  padding: 8px;
+  margin: 12px 0;
   border-radius: 8px;
   border-left: 5px solid #F7C64A;
 }
