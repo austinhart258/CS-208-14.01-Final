@@ -6,3 +6,34 @@ body {
 a {
   color: #00B7FF;
 }
+
+/* SKIP LINK */
+.skip-link {
+  position: absolute;
+  left: -999px;
+}
+
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+  background: #F7C64A;
+  padding: 8px;
+}
+
+/* FOCUS STATES */
+a:focus, button:focus, textarea:focus {
+  outline: 3px solid #F7C64A;
+}
+
+/* NAV IMPROVEMENT */
+.navbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* BETTER READABILITY */
+main {
+  max-width: 800px;
+  margin: auto;
+}

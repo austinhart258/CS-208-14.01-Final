@@ -1,7 +1,25 @@
 doctype html
-html
+html(lang="en")
   head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+
+    a.skip-link(href="#main") Skip to content
+
+    header
+      h1 Downtown Donuts
+
+      nav.navbar(role="navigation" aria-label="Main Navigation")
+        a(href='/?page=home' tabindex="0") Home
+        a(href='/?page=menu' tabindex="0") Menu
+        a(href='/?page=about' tabindex="0") About
+        a(href='/?page=comments' tabindex="0") Comments
+
+    main#main
+      block content
+
+    footer
+      p © Downtown Donuts
