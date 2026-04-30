@@ -66,3 +66,8 @@ main {
   max-width: 800px;
   margin: auto;
 }
+
+/* BUTTON CLARITY */
+button:focus {
+  outline: 3px solid #F7C64A;
+}

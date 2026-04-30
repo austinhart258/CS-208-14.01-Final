@@ -79,9 +79,15 @@ block content
     form(method='POST' action='/add-comment')
       label(for='comment') Your Comment:
       textarea(name='task' id='comment' required)
-      button(type='submit') Post Comment
+      button(type='submit' onclick="this.disabled=true; this.form.submit();") Post Comment
 
     each val in todos
       article.comment
         p= val.task
-        small Posted: #{val.completed}
+        small Posted recently
+      
+    div.pagination
+      if currentPage > 1
+        a(href=`/comments?p=${currentPage - 1}`) Prev
+
+      a(href=`/comments?p=${currentPage + 1}`) Next
