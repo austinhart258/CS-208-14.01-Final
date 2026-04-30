@@ -133,4 +133,30 @@ router.post('/add-comment', function (req, res) {
   );
 });
 
+/* DELETE COMMENT */
+router.post('/delete-comment', function (req, res) {
+  const { id } = req.body;
+
+  try {
+    req.db.query(
+      'DELETE FROM todos WHERE id = ?;',
+      [id],
+      (err, results) => {
+        if (err) {
+          console.error('Error deleting comment:', err);
+          return res.status(500).send('Error deleting comment');
+        }
+
+        console.log('Comment deleted:', results);
+
+        // REDIRECT TO COMMENTS
+        res.redirect('/comments');
+      }
+    );
+  } catch (error) {
+    console.error('Error deleting comment:', error);
+    res.status(500).send('Error deleting comment');
+  }
+});
+
 module.exports = router;

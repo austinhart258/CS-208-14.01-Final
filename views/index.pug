@@ -85,6 +85,10 @@ block content
       article.comment
         p= val.task
         small Posted: #{val.formattedTime}
+    
+        form(method='POST' action='/delete-comment')
+          input(type='hidden' name='id' value=val.id)
+          button.delete-btn(type='submit') Delete
       
     div.pagination
       if currentPage > 1
