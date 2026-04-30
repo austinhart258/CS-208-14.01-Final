@@ -29,6 +29,7 @@ a {
 .hero p,
 .hero a {
   position: relative;
+  z-index: 1;
 }
 
 /* SKIP LINK */
