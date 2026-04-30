@@ -1,3 +1,18 @@
 extends layout
 
 block content
+
+  /* NAVBAR */
+  nav.navbar
+    a(href='/?page=home') Home
+    a(href='/?page=menu') Menu
+    a(href='/?page=about') About
+    a(href='/?page=comments') Comments
+
+  /* HOME PAGE */
+  if page == 'home'
+    section.hero
+      h1 Fresh Donuts Daily
+      p Family-owned, made fresh, since 1992
+      img(src="/images/donut.jpg" alt="Fresh donuts")
+      a.button(href='/?page=menu') View Menu
