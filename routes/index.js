@@ -6,10 +6,9 @@ router.get('/', function(req, res, next){
   try {
     req.db.query('SELECT * FROM todos;', (err, results) => {
       if (err) {
-        console.error('Error fetching todos:', err);
-        return res.status(500).send('Error fetching todos');
+        if (err) return res.status(500).send("Error");
       }
-      res.render('index', { title: 'My Simple TODO', todos: results });
+      res.render('index', { title: 'Downtown Donuts', todos: results, page: page});
     });
   } catch (error) {
     console.error('Error fetching items:', error);
