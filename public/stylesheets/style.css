@@ -30,7 +30,7 @@ header {
   background-image: url('/images/donut.jpg');
   background-size: cover;
   background-position: center;
-  color: white;
+  color: #F7F7F7;
   padding: 200px 20px;
   text-align: center;
 }
@@ -52,6 +52,20 @@ header {
 
 .hero {
   position: relative;
+}
+
+/* MENU STYLING */
+.menu {
+  border: none;
+  border-top: 2px solid black;
+  list-style: none;
+  padding: 20px;
+}
+
+.menu li {
+  border: none;
+  border-bottom: 2px dotted #8C92AC;
+  padding: 7px;
 }
 
 /* SKIP LINK */
@@ -89,10 +103,11 @@ main {
 button, .button {
   background-color: #F7C64A;
   color: black;
-  border: none;
+  border: 2px solid #10291D;
   padding: 8px 12px;
   margin-top: 8px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
@@ -120,6 +135,27 @@ button:hover {
   margin: 12px 0;
   border-radius: 8px;
   border-left: 5px solid #F7C64A;
+}
+
+/* CENTER COMMENT FORM */
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* TEXTAREA SIZE */
+textarea {
+  width: 250px;
+  height: 40px;
+  padding: 5px;
 }
 
 /* PAGINATION */

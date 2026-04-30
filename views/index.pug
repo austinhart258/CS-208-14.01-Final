@@ -76,9 +76,10 @@ block content
     if error
       p(style="color:red")= error
 
-    form(method='POST' action='/add-comment')
-      label(for='comment') Your Comment:
-      textarea(name='task' id='comment' required)
+    form(method='POST' action='/add-comment').comment-form
+      div.form-group
+        label(for='comment') Reviews & comments:
+        textarea(name='task' id='comment' required)
       button(type='submit' onclick="this.disabled=true; this.form.submit();") Post Comment
 
     each val in todos
