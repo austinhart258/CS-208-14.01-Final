@@ -30,7 +30,11 @@ router.get('/comments', function(req, res) {
       res.render('index', {
         title: 'Comments',
         page: 'comments',
-        todos: results,
+        todos: results.map((r, i) => ({
+          ...r,
+          // simulate timestamp based on order
+          formattedTime: new Date(Date.now() - i * 60000).toLocaleString()
+        })),
         currentPage: pageNum
       });
     }
@@ -50,7 +54,7 @@ router.post('/add-comment', function (req, res) {
         error: "Something went wrong"
       });
     });
-  };
+};
 
   /* VALIDATION */
   if (!task || task.trim() === '') {
@@ -65,16 +69,16 @@ router.post('/add-comment', function (req, res) {
 
   /* INSERT TASK */
   req.db.query(
-  'INSERT INTO todos (task) VALUES (?)',
-  [clean],
-  (err) => {
-    if (err) {
-      console.error(err);
-      return reloadComments();
+    'INSERT INTO todos (task) VALUES (?)',
+    [clean],
+    (err) => {
+      if (err) {
+        console.error(err);
+        return reloadComments();
+      }
+      res.redirect('/comments');
     }
-    res.redirect('/comments');
-  }
-);
+  );
 });
 
 module.exports = router;

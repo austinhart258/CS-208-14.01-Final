@@ -84,7 +84,7 @@ block content
     each val in todos
       article.comment
         p= val.task
-        small Posted recently
+        small Posted: #{val.formattedTime}
       
     div.pagination
       if currentPage > 1
