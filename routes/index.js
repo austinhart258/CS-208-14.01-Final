@@ -106,7 +106,7 @@ router.post('/add-comment', function (req, res) {
     return reloadComments();
   }
 
-  if (task.length > 300) {
+  if (task.length > 200) {
     return reloadComments();
   }
 
