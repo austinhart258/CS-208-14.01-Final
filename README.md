@@ -3,7 +3,7 @@ Name: Austin Hart
 GitHub: https://github.com/austinhart258
 Term: Spring 2026
 
-Project Description --
+-- Project Description --
 
 This is my full-stack application for CS208, built with node.js. I built a web application for a small donut shop that allows users to view and order donuts online. The application uses Express for the backend and MariaDB (MySQL) for the database. This application includes multiple pages, server-side validation, pagination, and timestamp generation. Please read the following instructions carefully because some of the setup only needs to be done once.
 
@@ -37,7 +37,7 @@ npm start
 On Codespaces, you can access the application by forwarding port 3000. Open the forwarded port in your browser to view the application.
 
 
-Design Decisions --
+-- Design Decisions --
 
 1.) Since the database didnt provide a built in timestamp field I decided to store the comment and timestamp together as a JSON string. Allowing me to meet the server-side timestamps requirement without changing the database structure
 
@@ -48,11 +48,11 @@ Design Decisions --
 4.) The design is meant to look minimal, cozy, and modern as provided in the guidelines and is minimal to reflect the modern cozy design
 
 
-Edge cases --
+-- Edge cases --
 
 1.) Empty comment submissions/only whitespace is rejected by the server and the page reloads with the error message 'Something went wrong'.
 
-2.) Comments longer than 200 characters are rejected and the same error message stated previously is thrown with the page reloading.
+2.) Comments longer than 500 characters are rejected and the same error message stated previously is thrown with the page reloading.
 
 3.) If the database query fails the application doesn't crash (not tested dont quote me on this(parenthesis inside parenthesis i know but I just wrote the code hoping it works)) and instead renders the page with an error message
 
@@ -61,7 +61,7 @@ Edge cases --
 5.) If someone tried to hit the submit button more than once the button is already disabled after being clicked to prevent duplicate submissions
 
 
-Challenges --
+-- Challenges --
 
 1.) I struggled with handling the timestamps as I didnt want to modify the database or sql so instead I stored it as a JSON object(javascript object since it was done in javascript code but you know sounds fancy).
 
@@ -73,8 +73,9 @@ Challenges --
 Note -- I wanted to add code to have the nav header follow the page but in the end I got a bit lazy and I might come back to see if I cant do that since I think it would look cool to have it follow the page, including the image in the top left.
 
 
-Citations --
+-- Citations --
 
 Google (I used google for general debugging and inquiry about how to use code and if I couldnt remember certain syntax)
 ChatGPT (I used ChatGPT to help with debugging and questions like how to import the montserrat and italianno fonts)
 MDN Web Docs (For general inquiry about properties, syntax, etc.) Link-https://developer.mozilla.org/en-US/
+StackOverflow (Generic debugging and inquiry)

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+/* TITLE CARD */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Downtown Donuts', page: 'home' });
 });
@@ -15,7 +16,7 @@ router.get('/about', function(req, res) {
   res.render('index', { title: 'About', page: 'about' });
 });
 
-/* COMMENTS */
+/* COMMENTS + BACKEND HANDLING + EDGE CASE HANDLING */
 router.get('/comments', function(req, res) {
   const pageNum = parseInt(req.query.p) || 1;
   const limit = 10;
@@ -40,7 +41,7 @@ router.get('/comments', function(req, res) {
         todos: results.map((r, i) => {
           let parsed;
 
-          // TRY TO PARSE NEW COMMENTS
+          /* TRY TO PARSE NEW COMMENTS */
           if (typeof r.task === "string" && r.task.trim().startsWith("{")) {
             try {
               parsed = JSON.parse(r.task);
@@ -49,7 +50,7 @@ router.get('/comments', function(req, res) {
             }
           }
 
-          // FALLBACK
+          /* FALLBACK */
           if (!parsed || !parsed.time) {
             parsed = {
               text: r.task,
@@ -62,6 +63,7 @@ router.get('/comments', function(req, res) {
 
           let timeAgo;
 
+          /* MIN/MAX TIMES FOR COMMENTS TIME AGO */
           if (diff < 60) {
             timeAgo = `${diff} second${diff !== 1 ? 's' : ''} ago`;
           } else if (diff < 3600) {
@@ -86,6 +88,7 @@ router.get('/comments', function(req, res) {
   );
 });
 
+/* POST COMMENTS + BACKEND HANDLING + EDGE CASE HANDLING */
 router.post('/add-comment', function (req, res) {
   let { task } = req.body;
 
@@ -106,14 +109,14 @@ router.post('/add-comment', function (req, res) {
     return reloadComments();
   }
 
-  if (task.length > 200) {
+  if (task.length > 500) {
     return reloadComments();
   }
 
   const clean = task.replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const timestamp = Date.now();
 
-  // store both text + time together
+  /* STORE BOTH TEXT + TIME */
   const stored = JSON.stringify({
     text: clean,
     time: timestamp
@@ -133,7 +136,7 @@ router.post('/add-comment', function (req, res) {
   );
 });
 
-/* DELETE COMMENT */
+/* DELETE COMMENT + BACKEND HANDLING + EDGE CASE HANDLING */
 router.post('/delete-comment', function (req, res) {
   const { id } = req.body;
 

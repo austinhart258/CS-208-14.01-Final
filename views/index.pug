@@ -76,12 +76,14 @@ block content
     if error
       p(style="color:red")= error
 
+    //POST HANDLING
     form(method='POST' action='/add-comment').comment-form
       div.form-group
         label(for='comment') Reviews & comments:
         textarea(name='task' id='comment' required)
       button(type='submit' onclick="this.disabled=true; this.form.submit();") Post Comment
 
+    //DELETE HANDLING
     each val in todos
       article.comment
         p= val.task
@@ -90,7 +92,8 @@ block content
         form(method='POST' action='/delete-comment')
           input(type='hidden' name='id' value=val.id)
           button.delete-btn(type='submit') Delete
-      
+    
+    // PAGINATION PREV/NEXT
     div.pagination
       if currentPage > 1
         a(href=`/comments?p=${currentPage - 1}`) Prev

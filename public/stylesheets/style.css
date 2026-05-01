@@ -12,11 +12,13 @@ header {
   text-align: center;
 }
 
+/* FOOTER */
 footer {
   color: #000;
   text-align: bottom left;
 }
 
+/* DOWNTOWN DONUTS */
 .title{
   position: relative;
   font-family: 'Italianno', cursive;
@@ -39,6 +41,7 @@ footer {
   color : #F7F7F7
 }
 
+/* NAV IMG */
 .navbar::before {
   content: "";
   position: absolute;
